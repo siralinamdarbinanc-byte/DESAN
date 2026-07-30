@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دسن گرافیک | حالت آفلاین</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body {
+      background: #0F172A;
+      color: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 2.5rem 1.5rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    .logo-box {
+      width: 80px;
+      height: 80px;
+      background: #9E1B22;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(158, 27, 34, 0.4);
+    }
+    .logo-box img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #FFFFFF; }
+    p { font-size: 0.95rem; color: #94A3B8; margin-bottom: 1.5rem; line-height: 1.6; }
+    .contacts {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 16px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: right;
+    }
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-label { color: #94A3B8; }
+    .contact-value { color: #F8FAFC; font-weight: 600; direction: ltr; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: #9E1B22; color: #FFFFFF; margin-bottom: 0.75rem; box-shadow: 0 4px 14px rgba(158, 27, 34, 0.4); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.1); color: #F8FAFC; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo-box">
+      <img src="logo.png" alt="دسن گرافیک">
+    </div>
+    <h1>شما در حالت آفلاین هستید</h1>
+    <p>ارتباط اینترنت شما قطع است، اما شماره‌های تماس دسن گرافیک کماکان در دسترس شماست.</p>
+    
+    <div class="contacts">
+      <div class="contact-row">
+        <span class="contact-label">تلفن دفتر:</span>
+        <span class="contact-value">021 7724 3982</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">موبایل پشتیبانی:</span>
+        <span class="contact-value">0912 684 3449</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">واتساپ:</span>
+        <span class="contact-value">0903 134 0125</span>
+      </div>
+    </div>
+
+    <a href="tel:02177243982" class="btn btn-primary">
+      📞 تماس تلفنی با دفتر
+    </a>
+    <button onclick="window.location.reload()" class="btn btn-secondary">
+      🔄 تلاش مجدد جهت اتصال
+    </button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "دسن گرافیک | Desan Graphic",
+  "description": "کارت ویزیت دیجیتال و هوشمند دسن گرافیک - PWA Digital Business Card for Desan Graphic",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

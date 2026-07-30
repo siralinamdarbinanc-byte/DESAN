@@ -1,0 +1,37 @@
+import subprocess
+
+svg_content = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="1000" height="420">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@900&amp;display=swap');
+      .red-fill { fill: #E52328; }
+      .text-desan { font-family: 'Vazirmatn', 'Arial Black', sans-serif; font-weight: 900; font-size: 88px; fill: #E52328; letter-spacing: 3px; }
+      .text-sub { font-family: 'Vazirmatn', 'Arial Black', sans-serif; font-weight: 900; font-size: 38px; fill: #E52328; letter-spacing: 5px; }
+    </style>
+  </defs>
+
+  <g class="red-fill">
+    <!-- Left Crescent/Loop -->
+    <path d="M 255 18 C 75 18 10 105 10 210 C 10 315 75 402 255 402 L 255 300 C 135 300 110 255 110 210 C 110 165 135 120 255 120 Z" />
+    
+    <!-- Left Inner Dot -->
+    <circle cx="202" cy="210" r="62" />
+
+    <!-- Center Double Arch W -->
+    <path d="M 300 18 L 380 18 L 380 140 C 380 190 415 215 450 215 C 485 215 500 190 500 140 L 500 18 L 580 18 L 580 140 C 580 190 615 215 650 215 C 685 215 700 190 700 140 L 700 18 L 780 18 L 780 150 C 780 225 725 260 650 260 C 585 260 540 230 500 185 C 460 230 415 260 350 260 C 275 260 300 225 300 150 Z" />
+
+    <!-- Right Crescent/Loop -->
+    <path d="M 745 18 C 925 18 990 105 990 210 C 990 315 925 402 745 402 L 745 300 C 865 300 890 255 890 210 C 890 165 865 120 745 120 Z" />
+  </g>
+
+  <!-- DESAN Brand Title -->
+  <text x="500" y="358" text-anchor="middle" class="text-desan">DESAN</text>
+
+  <!-- GRAPHIC GROUP Subtitle -->
+  <text x="500" y="405" text-anchor="middle" class="text-sub">GRAPHIC GROUP</text>
+</svg>'''
+
+with open('public/logo.svg', 'w') as f:
+    f.write(svg_content)
+
+print("SVG written.")
