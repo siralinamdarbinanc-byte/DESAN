@@ -17,8 +17,6 @@ import {
   Download,
   Info,
   Sparkles,
-  Share2,
-  QrCode,
   Layers,
   MapPin,
   Send,
@@ -310,26 +308,7 @@ export default function App() {
           </motion.button>
         </div>
 
-        {/* Minimal Footer */}
-        <div className="shrink-0 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500">
-          <button
-            onClick={handleShareCard}
-            className="flex items-center gap-1 hover:text-[#9E1B22] transition-colors cursor-pointer"
-          >
-            <Share2 className="w-3.5 h-3.5" />
-            <span>اشتراک‌گذاری</span>
-          </button>
 
-          <span className="font-semibold">دسن گرافیک © ۱۴۰۳</span>
-
-          <button
-            onClick={() => setIsQRModalOpen(true)}
-            className="flex items-center gap-1 hover:text-[#9E1B22] transition-colors cursor-pointer"
-          >
-            <QrCode className="w-3.5 h-3.5" />
-            <span>کد QR</span>
-          </button>
-        </div>
       </div>
 
       {/* Details & Services Modal */}
