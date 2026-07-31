@@ -96,7 +96,7 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
         >
           <div className="relative w-32 sm:w-36 h-10 sm:h-12 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
             <img
-              src="/logo.png"
+              src="/logodesan.png"
               alt="لوگوی دسن گرافیک"
               className="w-full h-full object-contain drop-shadow-xs"
               referrerPolicy="no-referrer"
