@@ -39,10 +39,19 @@ export const downloadVCard = (): void => {
 };
 
 export const shareBusinessCard = async (): Promise<boolean> => {
+  const isPreview = typeof window !== 'undefined' && (
+    window.location.hostname.includes('run.app') ||
+    window.location.hostname.includes('localhost') ||
+    window.location.hostname.includes('127.0.0.1')
+  );
+  const targetUrl = isPreview
+    ? (businessData.cardUrl || 'https://siralinamdarbinanc-byte.github.io/DESAN/')
+    : window.location.href;
+
   const shareData = {
     title: businessData.name,
     text: `${businessData.name} - ${businessData.tagline}\nتلفن: ${businessData.phoneFormatted}`,
-    url: window.location.href,
+    url: targetUrl,
   };
 
   if (navigator.share) {
@@ -58,7 +67,7 @@ export const shareBusinessCard = async (): Promise<boolean> => {
 
   // Fallback to copying URL
   try {
-    await navigator.clipboard.writeText(window.location.href);
+    await navigator.clipboard.writeText(targetUrl);
     return false; // Indicating copied to clipboard fallback
   } catch (e) {
     console.error('Clipboard copy failed:', e);

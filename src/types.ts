@@ -10,6 +10,7 @@ export interface BusinessContact {
   whatsapp: string;
   whatsappFormatted: string;
   website: string;
+  cardUrl?: string;
   telegram: string;
   instagram: string;
   bale: string;
@@ -18,6 +19,12 @@ export interface BusinessContact {
   email: string;
   address: string;
   city: string;
+  locationLinks?: {
+    google: string;
+    neshan: string;
+    balad: string;
+    waze: string;
+  };
   coordinates: {
     lat: number;
     lng: number;

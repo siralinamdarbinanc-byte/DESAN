@@ -28,7 +28,7 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
       icon: '/icons/telegram.png',
       webUrl: businessData.telegram,
       appScheme: 'tg://resolve?domain=Desan_graphic',
-      color: 'from-sky-950/60 to-slate-900 border-sky-800/40 text-sky-400',
+      color: 'bg-sky-50/80 border-sky-200 text-sky-900',
     },
     {
       id: 'instagram',
@@ -38,7 +38,7 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
       icon: '/icons/instagram.png',
       webUrl: businessData.instagram,
       appScheme: 'instagram://user?username=desangraphic',
-      color: 'from-fuchsia-950/60 to-slate-900 border-fuchsia-800/40 text-fuchsia-400',
+      color: 'bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900',
     },
     {
       id: 'bale',
@@ -48,7 +48,7 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
       icon: '/icons/bale.png',
       webUrl: businessData.bale,
       appScheme: 'ble://desangraphic',
-      color: 'from-emerald-950/60 to-slate-900 border-emerald-800/40 text-emerald-400',
+      color: 'bg-emerald-50/80 border-emerald-200 text-emerald-900',
     },
     {
       id: 'rubika',
@@ -58,7 +58,7 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
       icon: '/icons/rubika.png',
       webUrl: businessData.rubika,
       appScheme: 'rubika://page/desangraphic',
-      color: 'from-purple-950/60 to-slate-900 border-purple-800/40 text-purple-400',
+      color: 'bg-purple-50/80 border-purple-200 text-purple-900',
     },
     {
       id: 'eitaa',
@@ -68,7 +68,7 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
       icon: '/icons/eitaa.png',
       webUrl: businessData.eitaa,
       appScheme: 'eitaa://desangraphic',
-      color: 'from-amber-950/60 to-slate-900 border-amber-800/40 text-amber-400',
+      color: 'bg-amber-50/80 border-amber-200 text-amber-900',
     },
   ];
 
@@ -102,12 +102,12 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="overflow-hidden mb-6"
         >
-          <div className="p-4 rounded-3xl bg-slate-900/90 border border-slate-800 space-y-3 backdrop-blur-md shadow-2xl">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800/80 px-1">
-              <span className="text-xs font-bold text-slate-300">
+          <div className="p-4 rounded-3xl bg-white border border-slate-200 space-y-3 shadow-xl">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 px-1">
+              <span className="text-xs font-bold text-slate-700">
                 شبکه‌های اجتماعی و پیام‌رسان‌ها
               </span>
-              <span className="text-[11px] text-slate-400">
+              <span className="text-[11px] text-[#9E1B22] font-semibold">
                 پاسخگویی آنلاین
               </span>
             </div>
@@ -122,10 +122,10 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
                 <button
                   id={`btn-social-${platform.id}`}
                   onClick={() => handleOpenPlatform(platform)}
-                  className={`w-full p-3.5 rounded-2xl bg-gradient-to-r ${platform.color} border flex items-center justify-between hover:scale-[1.01] transition-all duration-200 cursor-pointer shadow-md group`}
+                  className={`w-full p-3.5 rounded-2xl ${platform.color} border flex items-center justify-between hover:scale-[1.01] transition-all duration-200 cursor-pointer shadow-sm group`}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-slate-950/60 p-1.5 border border-white/10 shrink-0 shadow-inner group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-white p-1.5 border border-slate-200 shrink-0 shadow-sm group-hover:scale-105 transition-transform">
                       <img
                         src={platform.icon}
                         alt={platform.name}
@@ -134,18 +134,18 @@ export const ExpandableSocials: React.FC<ExpandableSocialsProps> = ({ isOpen }) 
                       />
                     </div>
                     <div className="text-right">
-                      <span className="text-sm font-bold text-white block">
+                      <span className="text-sm font-black text-slate-900 block">
                         {platform.persianName}
                       </span>
-                      <span className="text-xs text-slate-400 block dir-ltr text-right font-mono">
+                      <span className="text-xs text-slate-500 block dir-ltr text-right font-mono">
                         {platform.handle}
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-950/40 border border-white/5 text-slate-200 group-hover:text-white group-hover:bg-slate-900 transition-colors">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 group-hover:text-[#9E1B22] group-hover:border-[#9E1B22] transition-colors shadow-sm">
                     <span>ورود</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-white" />
+                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#9E1B22]" />
                   </div>
                 </button>
               </motion.div>

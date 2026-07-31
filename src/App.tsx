@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { HeaderCard } from './components/HeaderCard';
+import { SocialIconsBar } from './components/SocialIconsBar';
 import { QRCodeModal } from './components/QRCodeModal';
 import { InstallPromptModal } from './components/InstallPromptModal';
+import { LocationModal } from './components/LocationModal';
 import { NotificationToast } from './components/NotificationToast';
 import { DetailsModal } from './components/DetailsModal';
 import { BeforeInstallPromptEvent } from './types';
@@ -11,6 +13,7 @@ import {
   Phone,
   Smartphone,
   MessageCircle,
+  Globe,
   Download,
   Info,
   Sparkles,
@@ -18,12 +21,14 @@ import {
   QrCode,
   Layers,
   MapPin,
+  Send,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function App() {
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState<boolean>(false);
   const [isQRModalOpen, setIsQRModalOpen] = useState<boolean>(false);
+  const [isLocationModalOpen, setIsLocationModalOpen] = useState<boolean>(false);
   const [isInstallModalOpen, setIsInstallModalOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -117,89 +122,83 @@ export default function App() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-slate-950 text-slate-100 flex flex-col justify-between overflow-hidden selection:bg-rose-900 selection:text-white p-3 sm:p-4">
-      {/* Background Subtle Gradient Blobs */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-80 bg-gradient-to-b from-rose-950/30 via-slate-950/90 to-transparent pointer-events-none -z-10 blur-3xl" />
+    <div className="min-h-screen w-full bg-slate-50 text-slate-900 flex flex-col justify-between overflow-y-auto selection:bg-[#9E1B22] selection:text-white p-2 sm:p-3">
+      {/* Background Subtle Red Gradient Blobs */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-72 bg-gradient-to-b from-rose-100/60 via-rose-50/20 to-transparent pointer-events-none -z-10 blur-3xl" />
 
       {/* Container - Fits inside Viewport Height */}
-      <div className="w-full max-w-md mx-auto flex-1 flex flex-col justify-between py-1 sm:py-2">
+      <div className="w-full max-w-md mx-auto flex-1 flex flex-col justify-between py-0.5 sm:py-1">
         {/* Compact Header Card */}
         <div className="shrink-0">
           <HeaderCard onOpenQR={() => setIsQRModalOpen(true)} onShare={handleShareCard} />
         </div>
 
-        {/* Primary QR Focus: PWA App Installation Highlight Card */}
+        {/* Social Media Icons Bar */}
+        <div className="shrink-0">
+          <SocialIconsBar />
+        </div>
+
+        {/* PWA App Installation Highlight Card - Clean & Simplified */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="my-2 shrink-0"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="my-1 shrink-0"
         >
-          <div className="relative p-0.5 rounded-2xl bg-gradient-to-r from-rose-700 via-rose-500 to-amber-500 shadow-xl">
-            <button
-              onClick={handleTriggerInstall}
-              id="btn-install-pwa-primary"
-              className="w-full p-3.5 sm:p-4 rounded-[14px] bg-slate-900 hover:bg-slate-800 transition-all flex items-center justify-between text-right cursor-pointer group"
-            >
-              <div className="flex items-center gap-3">
-                <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-rose-600 to-rose-900 flex items-center justify-center text-white shadow-md shrink-0 group-hover:scale-105 transition-transform">
-                  <Sparkles className="w-6 h-6 text-amber-300 animate-pulse" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-extrabold text-white">نصب اپلیکیشن روی گوشی</span>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-950 text-rose-300 border border-rose-800">
-                      PWA
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-300 mt-0.5">
-                    دسترسی سریع، نمونه کارها، سفارش آنلاین و آفلاین
-                  </p>
-                </div>
+          <button
+            onClick={handleTriggerInstall}
+            id="btn-install-pwa-primary"
+            className="w-full p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-rose-200 hover:border-[#9E1B22] transition-all flex items-center justify-between text-right cursor-pointer group shadow-sm hover:shadow-md"
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="text-xs font-bold px-3 py-1.5 rounded-xl bg-rose-600 group-hover:bg-rose-500 text-white shrink-0 shadow-md">
-                نصب مستقیم
+              <div className="overflow-hidden">
+                <span className="text-xs sm:text-sm font-black text-slate-900 block truncate">
+                  نصب اپلیکیشن روی گوشی
+                </span>
+                <p className="text-[10px] sm:text-xs text-slate-600 truncate">
+                  دسترسی سریع و بدون نیاز به اینترنت
+                </p>
               </div>
-            </button>
-          </div>
+            </div>
+            <div className="text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg sm:rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200 shadow-sm">
+              نصب اپ
+            </div>
+          </button>
         </motion.div>
 
-        {/* Essential Quick Contact & Location Cards Grid */}
-        <div className="space-y-2 shrink-0 my-1">
-          {/* Phone Numbers & WhatsApp 2x2 Grid with Larger Numbers */}
+        {/* Essential Quick Contact, Website & Location Cards Grid */}
+        <div className="space-y-1.5 shrink-0 my-0.5">
+          {/* Main Grid: Office, Mobile, WhatsApp, Telegram, Website */}
           <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
             {/* Call Office */}
             <a
               href={`tel:${businessData.phone}`}
               id="btn-quick-call-office"
-              className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/90 border border-slate-800 hover:border-rose-600/60 flex items-center gap-3 transition-all active:scale-95 shadow-lg group"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl bg-rose-950/80 border border-rose-800/50 flex items-center justify-center text-rose-400 shrink-0 group-hover:scale-105 transition-transform">
-                <Phone className="w-5 h-5" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-rose-900/20">
+                <Phone className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <div className="text-right overflow-hidden">
-                <span className="text-xs font-bold block text-slate-300">تلفن دفتر مرکزی</span>
-                <span className="text-sm sm:text-base font-black text-white dir-ltr block truncate mt-0.5">
-                  ۰۲۱-۷۷۲۴۳۹۸۲
-                </span>
-              </div>
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                تماس دفتر
+              </span>
             </a>
 
             {/* Call Mobile */}
             <a
               href={`tel:${businessData.mobile}`}
               id="btn-quick-call-mobile"
-              className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/90 border border-slate-800 hover:border-rose-600/60 flex items-center gap-3 transition-all active:scale-95 shadow-lg group"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700/60 flex items-center justify-center text-rose-400 shrink-0 group-hover:scale-105 transition-transform">
-                <Smartphone className="w-5 h-5" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
+                <Smartphone className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <div className="text-right overflow-hidden">
-                <span className="text-xs font-bold block text-slate-300">موبایل پشتیبانی</span>
-                <span className="text-sm sm:text-base font-black text-white dir-ltr block truncate mt-0.5">
-                  ۰۹۱۲-۶۸۴۳۴۴۹
-                </span>
-              </div>
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                تماس همراه
+              </span>
             </a>
 
             {/* WhatsApp */}
@@ -208,104 +207,124 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-whatsapp"
-              className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/90 border border-slate-800 hover:border-emerald-600/60 flex items-center gap-3 transition-all active:scale-95 shadow-lg group"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-600 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-800/50 flex items-center justify-center text-emerald-400 shrink-0 group-hover:scale-105 transition-transform">
-                <MessageCircle className="w-5 h-5" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-emerald-900/20">
+                <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <div className="text-right overflow-hidden">
-                <span className="text-xs font-bold block text-slate-300">واتساپ سفارشات</span>
-                <span className="text-sm sm:text-base font-black text-emerald-400 dir-ltr block truncate mt-0.5">
-                  ۰۹۰۳-۱۳۴۰۱۲۵
-                </span>
-              </div>
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                واتساپ سفارشات
+              </span>
             </a>
 
-            {/* Save Contact */}
-            <button
-              onClick={handleSaveContact}
-              id="btn-quick-save-contact"
-              className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-900/90 border border-slate-800 hover:border-amber-600/60 flex items-center gap-3 transition-all active:scale-95 shadow-lg text-right cursor-pointer group"
+            {/* Telegram */}
+            <a
+              href={businessData.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="btn-quick-telegram"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-950/60 border border-amber-800/40 flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform">
-                <Download className="w-5 h-5" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-500 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-sky-900/20">
+                <Send className="w-6 h-6 sm:w-7 sm:h-7 ml-0.5" />
               </div>
-              <div className="text-right overflow-hidden">
-                <span className="text-xs font-bold block text-slate-300">ذخیره مخاطب</span>
-                <span className="text-xs sm:text-sm font-extrabold text-amber-300 block truncate mt-0.5">
-                  دانلود vCard
-                </span>
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+                تلگرام سفارشات
+              </span>
+            </a>
+
+            {/* Website Card - Full Width Banner */}
+            <a
+              href={businessData.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="btn-quick-website"
+              className="col-span-2 p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all active:scale-98 shadow-sm hover:shadow-md group cursor-pointer"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-rose-900/20">
+                  <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+                <div>
+                  <span className="text-sm sm:text-base font-black text-slate-900 block leading-tight">
+                    وبسایت رسمی دسن گرافیک
+                  </span>
+                  <p className="text-xs text-slate-500 font-mono mt-0.5 dir-ltr text-right">
+                    www.desangraphic.com
+                  </p>
+                </div>
               </div>
-            </button>
+              <div className="text-xs font-bold px-3 py-1.5 rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200 shadow-sm">
+                ورود به سایت
+              </div>
+            </a>
           </div>
 
-          {/* Large Prominent Location & Navigation Card */}
-          <a
-            href={`https://maps.google.com/?q=${businessData.coordinates.lat},${businessData.coordinates.lng}`}
-            target="_blank"
-            rel="noopener noreferrer"
+          {/* Location & Routing Card - Sleek & Prominent */}
+          <button
+            onClick={() => setIsLocationModalOpen(true)}
             id="btn-quick-location-card"
-            className="w-full p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-rose-950/30 to-slate-900 border border-rose-900/40 hover:border-rose-600/60 flex items-center justify-between text-right transition-all active:scale-98 shadow-lg group cursor-pointer"
+            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#84141A] to-[#9E1B22] border border-rose-800 flex items-center gap-3 text-right transition-all active:scale-98 shadow-md shadow-rose-900/20 hover:shadow-rose-900/30 group cursor-pointer"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-rose-600 flex items-center justify-center text-white shrink-0 shadow-md group-hover:scale-105 transition-transform">
-                <MapPin className="w-6 h-6" />
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <span className="text-base sm:text-lg font-black text-white leading-tight">
+              آدرس و مسیریابی دفتر
+            </span>
+          </button>
+        </div>
+
+        {/* View Details & Services Drawer Trigger - Eye-catching & Animated */}
+        <div className="shrink-0 my-1">
+          <motion.button
+            onClick={() => setIsDetailsModalOpen(true)}
+            id="btn-open-details-modal"
+            animate={{ scale: [1, 1.01, 1] }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
+            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-100 hover:from-rose-100 hover:to-amber-100 border-2 border-rose-300 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all shadow-md hover:shadow-lg cursor-pointer group relative overflow-hidden"
+          >
+            {/* Subtle animated background shine */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+            <div className="flex items-center gap-2.5 relative z-10">
+              <div className="w-9 h-9 rounded-xl bg-[#9E1B22] text-white flex items-center justify-center shadow-md group-hover:rotate-12 transition-transform duration-300">
+                <Sparkles className="w-5 h-5 animate-pulse text-amber-300" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-black text-white">آدرس و مسیریابی دفتر</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-950 text-rose-300 border border-rose-800">
-                    متروی گلبرگ (جانبازان)
+              <div className="text-right">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs sm:text-sm font-black bg-gradient-to-r from-[#9E1B22] via-rose-700 to-amber-900 bg-clip-text text-transparent">
+                    مشاهده خدمات کامل، آدرس و شبکه‌های اجتماعی
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 mt-0.5 line-clamp-1">
-                  {businessData.address}
+                <p className="text-[10px] sm:text-xs font-bold text-rose-800/80 mt-0.5">
+                  چاپ، طراحی، هدایای تبلیغاتی و اینستاگرام
                 </p>
               </div>
             </div>
 
-            <div className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800 group-hover:bg-rose-700 text-rose-300 group-hover:text-white transition-colors shrink-0 shadow-sm border border-slate-700">
-              مسیریابی
+            <div className="flex items-center gap-1 text-xs font-black px-2.5 py-1 rounded-xl bg-[#9E1B22] text-white group-hover:bg-[#84141A] transition-all shrink-0 shadow-sm relative z-10 group-hover:translate-x-[-2px]">
+              <span>اطلاعات</span>
+              <Layers className="w-3.5 h-3.5" />
             </div>
-          </a>
-        </div>
-
-        {/* View Details & Services Drawer Trigger */}
-        <div className="shrink-0 my-1">
-          <button
-            onClick={() => setIsDetailsModalOpen(true)}
-            id="btn-open-details-modal"
-            className="w-full p-3.5 rounded-2xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-800 flex items-center justify-between text-slate-200 transition-all shadow-md cursor-pointer group"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-rose-950/50 border border-rose-800/40 flex items-center justify-center text-rose-400 group-hover:bg-rose-900/50">
-                <Layers className="w-4 h-4" />
-              </div>
-              <div className="text-right">
-                <span className="text-xs sm:text-sm font-bold block text-white">
-                  مشاهده خدمات کامل، آدرس و شبکه های اجتماعی
-                </span>
-              </div>
-            </div>
-            <Info className="w-4 h-4 text-slate-400 group-hover:text-rose-400 transition-colors shrink-0" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Minimal Footer */}
-        <div className="shrink-0 pt-2 border-t border-slate-900/80 flex items-center justify-between text-[11px] text-slate-500">
+        <div className="shrink-0 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] sm:text-[11px] text-slate-500">
           <button
             onClick={handleShareCard}
-            className="flex items-center gap-1 hover:text-slate-300 transition-colors cursor-pointer"
+            className="flex items-center gap-1 hover:text-[#9E1B22] transition-colors cursor-pointer"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span>اشتراک‌گذاری</span>
           </button>
 
-          <span>دسن گرافیک © ۱۴۰۳</span>
+          <span className="font-semibold">دسن گرافیک © ۱۴۰۳</span>
 
           <button
             onClick={() => setIsQRModalOpen(true)}
-            className="flex items-center gap-1 hover:text-rose-400 transition-colors cursor-pointer"
+            className="flex items-center gap-1 hover:text-[#9E1B22] transition-colors cursor-pointer"
           >
             <QrCode className="w-3.5 h-3.5" />
             <span>کد QR</span>
@@ -317,6 +336,13 @@ export default function App() {
       <DetailsModal
         isOpen={isDetailsModalOpen}
         onClose={() => setIsDetailsModalOpen(false)}
+      />
+
+      {/* Location & Navigation Modal */}
+      <LocationModal
+        isOpen={isLocationModalOpen}
+        onClose={() => setIsLocationModalOpen(false)}
+        onShowToast={showToast}
       />
 
       {/* QR Code Modal */}
@@ -331,6 +357,7 @@ export default function App() {
         isOpen={isInstallModalOpen}
         onClose={() => setIsInstallModalOpen(false)}
         onInstallNative={handleTriggerInstall}
+        hasNativePrompt={!!deferredPrompt}
         isIOS={isIOS}
         isStandalone={isStandalone}
       />
