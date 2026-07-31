@@ -94,7 +94,7 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
           className="relative cursor-pointer"
           onClick={onOpenQR}
         >
-          <div className="relative w-32 sm:w-36 h-10 sm:h-12 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
+          <div className="relative w-64 sm:w-72 h-24 sm:h-28 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
             <img
               src={`${import.meta.env.BASE_URL}logodesan.png`}
               alt="لوگوی دسن گرافیک"
