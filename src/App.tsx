@@ -120,12 +120,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-50 text-slate-900 flex flex-col justify-between overflow-y-auto selection:bg-[#9E1B22] selection:text-white p-2 sm:p-3">
+    <div className="h-screen sm:h-[100dvh] max-h-[100dvh] w-full bg-slate-50 text-slate-900 flex flex-col justify-between overflow-hidden selection:bg-[#9E1B22] selection:text-white p-2 sm:p-3">
       {/* Background Subtle Red Gradient Blobs */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-72 bg-gradient-to-b from-rose-100/60 via-rose-50/20 to-transparent pointer-events-none -z-10 blur-3xl" />
 
       {/* Container - Fits inside Viewport Height */}
-      <div className="w-full max-w-md mx-auto flex-1 flex flex-col justify-between py-0.5 sm:py-1">
+      <div className="w-full max-w-md mx-auto flex-1 flex flex-col justify-between py-0.5 h-full">
         {/* Compact Header Card */}
         <div className="shrink-0">
           <HeaderCard onOpenQR={() => setIsQRModalOpen(true)} onShare={handleShareCard} />
@@ -136,51 +136,51 @@ export default function App() {
           <SocialIconsBar />
         </div>
 
-        {/* PWA App Installation Highlight Card - Clean & Simplified */}
+        {/* PWA App Installation Highlight Card - Clean & Compact */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="my-1 shrink-0"
+          className="my-0.5 shrink-0"
         >
           <button
             onClick={handleTriggerInstall}
             id="btn-install-pwa-primary"
-            className="w-full p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white border border-rose-200 hover:border-[#9E1B22] transition-all flex items-center justify-between text-right cursor-pointer group shadow-sm hover:shadow-md"
+            className="w-full p-2 rounded-xl bg-white border border-rose-200 hover:border-[#9E1B22] transition-all flex items-center justify-between text-right cursor-pointer group shadow-2xs hover:shadow-xs"
           >
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#9E1B22] flex items-center justify-center text-white shadow-2xs shrink-0 group-hover:scale-105 transition-transform">
+                <Smartphone className="w-4 h-4" />
               </div>
               <div className="overflow-hidden">
-                <span className="text-xs sm:text-sm font-black text-slate-900 block truncate">
+                <span className="text-xs font-black text-slate-900 block truncate">
                   نصب اپلیکیشن روی گوشی
                 </span>
-                <p className="text-[10px] sm:text-xs text-slate-600 truncate">
+                <p className="text-[10px] text-slate-600 truncate">
                   دسترسی سریع و بدون نیاز به اینترنت
                 </p>
               </div>
             </div>
-            <div className="text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-lg sm:rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200 shadow-sm">
+            <div className="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
               نصب اپ
             </div>
           </button>
         </motion.div>
 
         {/* Essential Quick Contact, Website & Location Cards Grid */}
-        <div className="space-y-1.5 shrink-0 my-0.5">
-          {/* Main Grid: Office, Mobile, WhatsApp, Telegram, Website */}
-          <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
+        <div className="space-y-1 shrink-0 my-0.5">
+          {/* Main Grid: Office, Mobile, WhatsApp, Telegram */}
+          <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
             {/* Call Office */}
             <a
               href={`tel:${businessData.phone}`}
               id="btn-quick-call-office"
-              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-rose-900/20">
-                <Phone className="w-6 h-6 sm:w-7 sm:h-7" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+              <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">
                 تماس دفتر
               </span>
             </a>
@@ -189,12 +189,12 @@ export default function App() {
             <a
               href={`tel:${businessData.mobile}`}
               id="btn-quick-call-mobile"
-              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md">
-                <Smartphone className="w-6 h-6 sm:w-7 sm:h-7" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+              <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">
                 تماس همراه
               </span>
             </a>
@@ -205,12 +205,12 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-whatsapp"
-              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-600 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 hover:border-emerald-600 flex flex-col items-center justify-center text-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-emerald-900/20">
-                <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-emerald-900/20">
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+              <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">
                 واتساپ سفارشات
               </span>
             </a>
@@ -221,12 +221,12 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-telegram"
-              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-sm hover:shadow-md group cursor-pointer"
+              className="p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 hover:border-sky-500 flex flex-col items-center justify-center text-center gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-500 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-sky-900/20">
-                <Send className="w-6 h-6 sm:w-7 sm:h-7 ml-0.5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-500 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-sky-900/20">
+                <Send className="w-4 h-4 sm:w-5 sm:h-5 ml-0.5" />
               </div>
-              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
+              <span className="text-xs sm:text-sm font-black text-slate-900 leading-tight">
                 تلگرام سفارشات
               </span>
             </a>
@@ -237,78 +237,73 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-website"
-              className="col-span-2 p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all active:scale-98 shadow-sm hover:shadow-md group cursor-pointer"
+              className="col-span-2 p-2 sm:p-2.5 rounded-xl bg-white border border-slate-200 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all active:scale-98 shadow-2xs hover:shadow-xs group cursor-pointer"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-md shadow-rose-900/20">
-                  <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
+                  <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <span className="text-sm sm:text-base font-black text-slate-900 block leading-tight">
+                  <span className="text-xs sm:text-sm font-black text-slate-900 block leading-tight">
                     وبسایت رسمی دسن گرافیک
                   </span>
-                  <p className="text-xs text-slate-500 font-mono mt-0.5 dir-ltr text-right">
+                  <p className="text-[10px] text-slate-500 font-mono mt-0.5 dir-ltr text-right">
                     www.desangraphic.com
                   </p>
                 </div>
               </div>
-              <div className="text-xs font-bold px-3 py-1.5 rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200 shadow-sm">
+              <div className="text-[10px] sm:text-xs font-bold px-2 py-1 rounded-lg bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
                 ورود به سایت
               </div>
             </a>
           </div>
 
-          {/* Location & Routing Card - Sleek & Prominent */}
+          {/* Location & Routing Card */}
           <button
             onClick={() => setIsLocationModalOpen(true)}
             id="btn-quick-location-card"
-            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#84141A] to-[#9E1B22] border border-rose-800 flex items-center gap-3 text-right transition-all active:scale-98 shadow-md shadow-rose-900/20 hover:shadow-rose-900/30 group cursor-pointer"
+            className="w-full p-2 sm:p-2.5 rounded-xl bg-gradient-to-r from-[#9E1B22] via-[#84141A] to-[#9E1B22] border border-rose-800 flex items-center gap-2.5 text-right transition-all active:scale-98 shadow-sm shadow-rose-900/20 hover:shadow-md group cursor-pointer"
           >
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 shadow-sm group-hover:scale-105 transition-transform">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <span className="text-base sm:text-lg font-black text-white leading-tight">
+            <span className="text-xs sm:text-sm font-black text-white leading-tight">
               آدرس و مسیریابی دفتر
             </span>
           </button>
         </div>
 
-        {/* View Details & Services Drawer Trigger - Eye-catching & Animated */}
-        <div className="shrink-0 my-1">
+        {/* View Details & Services Drawer Trigger */}
+        <div className="shrink-0 my-0.5">
           <motion.button
             onClick={() => setIsDetailsModalOpen(true)}
             id="btn-open-details-modal"
             animate={{ scale: [1, 1.01, 1] }}
             transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-100 hover:from-rose-100 hover:to-amber-100 border-2 border-rose-300 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all shadow-md hover:shadow-lg cursor-pointer group relative overflow-hidden"
+            className="w-full p-2 sm:p-2.5 rounded-xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-100 hover:from-rose-100 hover:to-amber-100 border border-rose-300 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all shadow-xs hover:shadow-sm cursor-pointer group relative overflow-hidden"
           >
-            {/* Subtle animated background shine */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-            <div className="flex items-center gap-2.5 relative z-10">
-              <div className="w-9 h-9 rounded-xl bg-[#9E1B22] text-white flex items-center justify-center shadow-md group-hover:rotate-12 transition-transform duration-300">
-                <Sparkles className="w-5 h-5 animate-pulse text-amber-300" />
+            <div className="flex items-center gap-2 relative z-10">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#9E1B22] text-white flex items-center justify-center shadow-xs group-hover:rotate-12 transition-transform duration-300">
+                <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
               </div>
               <div className="text-right">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-xs sm:text-sm font-black bg-gradient-to-r from-[#9E1B22] via-rose-700 to-amber-900 bg-clip-text text-transparent">
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-black bg-gradient-to-r from-[#9E1B22] via-rose-700 to-amber-900 bg-clip-text text-transparent">
                     مشاهده خدمات کامل، آدرس و شبکه‌های اجتماعی
                   </span>
                 </div>
-                <p className="text-[10px] sm:text-xs font-bold text-rose-800/80 mt-0.5">
+                <p className="text-[9px] sm:text-[10px] font-bold text-rose-800/80 mt-0.5">
                   چاپ، طراحی، هدایای تبلیغاتی و اینستاگرام
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-1 text-xs font-black px-2.5 py-1 rounded-xl bg-[#9E1B22] text-white group-hover:bg-[#84141A] transition-all shrink-0 shadow-sm relative z-10 group-hover:translate-x-[-2px]">
+            <div className="flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-lg bg-[#9E1B22] text-white group-hover:bg-[#84141A] transition-all shrink-0 shadow-2xs relative z-10">
               <span>اطلاعات</span>
-              <Layers className="w-3.5 h-3.5" />
+              <Layers className="w-3 h-3" />
             </div>
           </motion.button>
         </div>
-
-
       </div>
 
       {/* Details & Services Modal */}

@@ -48,14 +48,14 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -15, scale: 0.98 }}
+      initial={{ opacity: 0, y: -10, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="relative overflow-visible rounded-2xl sm:rounded-3xl bg-white p-3 sm:p-4 shadow-md border border-rose-100 text-center"
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="relative overflow-visible rounded-2xl bg-white p-2 sm:p-3 shadow-sm border border-rose-100 text-center"
     >
       {/* Deep Red Background Subtle Accents */}
-      <div className="absolute -top-16 -left-16 h-40 w-40 rounded-full bg-rose-100/40 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-rose-50/60 blur-3xl pointer-events-none" />
+      <div className="absolute -top-16 -left-16 h-32 w-32 rounded-full bg-rose-100/40 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 -right-16 h-32 w-32 rounded-full bg-rose-50/60 blur-3xl pointer-events-none" />
 
       {/* Header Top Action Buttons */}
       <div className="flex items-center justify-end mb-0.5 relative z-10">
@@ -83,58 +83,58 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
       </div>
 
       {/* Header Content */}
-      <div className="flex flex-col items-center justify-center space-y-2 relative z-10 py-0.5">
+      <div className="flex flex-col items-center justify-center space-y-1.5 relative z-10 py-0.5">
         {/* Prominent Logo Container */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.1, type: 'spring', stiffness: 200 }}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
+          transition={{ duration: 0.4, delay: 0.1, type: 'spring', stiffness: 200 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
           className="relative cursor-pointer"
           onClick={onOpenQR}
         >
-          <div className="relative w-36 sm:w-44 h-14 sm:h-18 rounded-xl bg-transparent p-1 flex items-center justify-center overflow-hidden transition-all duration-300">
+          <div className="relative w-32 sm:w-36 h-10 sm:h-12 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
             <img
               src="/logo.png"
               alt="لوگوی دسن گرافیک"
-              className="w-full h-full object-contain drop-shadow-sm"
+              className="w-full h-full object-contain drop-shadow-xs"
               referrerPolicy="no-referrer"
             />
           </div>
         </motion.div>
 
-        {/* POP-OUT 3D TITLE BOX (اکشن خروج از کادر) */}
+        {/* POP-OUT 3D TITLE BOX */}
         <motion.div
-          initial={{ opacity: 0, y: 15, scale: 0.9 }}
+          initial={{ opacity: 0, y: 10, scale: 0.9 }}
           animate={{ 
             opacity: 1, 
-            y: [0, -4, 0],
-            scale: [1, 1.02, 1]
+            y: [0, -3, 0],
+            scale: [1, 1.01, 1]
           }}
           transition={{
             y: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
             scale: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
-            duration: 0.6
+            duration: 0.5
           }}
-          className="relative z-20 px-5 py-2.5 rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#B91C24] to-[#9E1B22] text-white border-2 border-rose-200/50 shadow-xl shadow-rose-950/25 flex items-center justify-center gap-2 transform hover:scale-105 transition-all cursor-pointer group"
+          className="relative z-20 px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#9E1B22] via-[#B91C24] to-[#9E1B22] text-white border border-rose-200/50 shadow-md shadow-rose-950/20 flex items-center justify-center gap-2 transform hover:scale-105 transition-all cursor-pointer group"
           onClick={onOpenQR}
         >
-          <h1 className="text-xl sm:text-2xl font-black tracking-tight leading-none text-white drop-shadow-md">
+          <h1 className="text-lg sm:text-xl font-black tracking-tight leading-none text-white drop-shadow-xs">
             {businessData.name}
           </h1>
         </motion.div>
 
-        {/* TYPEWRITER MOTION SUBTITLE (موشن تایپ) */}
-        <div className="flex items-center justify-center gap-1.5 bg-slate-100/90 border border-slate-200/90 px-3 py-1 rounded-xl text-slate-800 text-xs font-bold min-h-[28px] max-w-full overflow-hidden shadow-xs">
-          <Terminal className="w-3.5 h-3.5 text-[#9E1B22] shrink-0" />
+        {/* TYPEWRITER MOTION SUBTITLE */}
+        <div className="flex items-center justify-center gap-1.5 bg-slate-100/90 border border-slate-200/90 px-2.5 py-0.5 rounded-lg text-slate-800 text-[11px] sm:text-xs font-bold min-h-[24px] max-w-full overflow-hidden shadow-2xs">
+          <Terminal className="w-3 h-3 text-[#9E1B22] shrink-0" />
           <span className="font-bold dir-rtl truncate">
             {displayedText}
           </span>
           <motion.span
             animate={{ opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 0.8 }}
-            className="inline-block w-1.5 h-3.5 bg-[#9E1B22] rounded-xs shrink-0"
+            className="inline-block w-1.5 h-3 bg-[#9E1B22] rounded-xs shrink-0"
           />
         </div>
       </div>

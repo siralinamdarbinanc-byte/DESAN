@@ -85,18 +85,18 @@ export const SocialIconsBar: React.FC = () => {
   ];
 
   return (
-    <div className="w-full my-1.5 p-2.5 sm:p-3 rounded-2xl bg-white border border-rose-100 shadow-sm">
-      <div className="flex items-center justify-between mb-2 px-1">
-        <span className="text-xs font-black text-slate-800 flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#9E1B22] animate-ping" />
+    <div className="w-full my-1 p-2 rounded-xl bg-white border border-rose-100 shadow-2xs">
+      <div className="flex items-center justify-between mb-1 px-0.5">
+        <span className="text-[11px] font-black text-slate-800 flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#9E1B22] animate-ping" />
           شبکه‌های اجتماعی و پیام‌رسان‌ها
         </span>
-        <span className="text-[10px] font-bold text-[#9E1B22] bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full">
+        <span className="text-[9px] font-bold text-[#9E1B22] bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded-full">
           راه ارتباطی مستقیم
         </span>
       </div>
 
-      <div className="grid grid-cols-6 gap-1.5 sm:gap-2">
+      <div className="grid grid-cols-6 gap-1 sm:gap-1.5">
         {socials.map((social, idx) => (
           <motion.a
             key={social.id}
@@ -109,10 +109,10 @@ export const SocialIconsBar: React.FC = () => {
             transition={{ delay: idx * 0.05, duration: 0.3 }}
             whileHover={{ scale: 1.1, y: -3 }}
             whileTap={{ scale: 0.95 }}
-            className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-slate-50 hover:bg-white border border-slate-200 transition-all shadow-xs group"
+            className="flex flex-col items-center justify-center p-1 rounded-lg bg-slate-50 hover:bg-white border border-slate-200 transition-all shadow-xs group"
             title={`ورود به ${social.persianName}`}
           >
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white p-1 border border-slate-100 shadow-xs flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-shadow">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white p-1 border border-slate-100 shadow-xs flex items-center justify-center relative overflow-hidden group-hover:shadow-md transition-shadow">
               <img
                 src={social.icon}
                 alt={social.name}
@@ -120,7 +120,7 @@ export const SocialIconsBar: React.FC = () => {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <span className="text-[10px] font-bold text-slate-700 mt-1 truncate max-w-full group-hover:text-[#9E1B22] transition-colors">
+            <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 mt-0.5 truncate max-w-full group-hover:text-[#9E1B22] transition-colors">
               {social.persianName}
             </span>
           </motion.a>
