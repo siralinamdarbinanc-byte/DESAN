@@ -120,12 +120,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen sm:h-[100dvh] max-h-[100dvh] w-full bg-slate-50 text-slate-900 flex flex-col justify-center items-center overflow-hidden selection:bg-[#9E1B22] selection:text-white p-2 sm:p-3 md:p-4">
+    <div className="min-h-screen w-full bg-slate-50 text-slate-900 flex flex-col justify-start items-center selection:bg-[#9E1B22] selection:text-white p-3 sm:p-4 md:p-6 overflow-y-auto">
       {/* Background Subtle Red Gradient Blobs */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-xl h-72 bg-gradient-to-b from-rose-100/60 via-rose-50/20 to-transparent pointer-events-none -z-10 blur-3xl" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-72 bg-gradient-to-b from-rose-100/60 via-rose-50/20 to-transparent pointer-events-none -z-10 blur-3xl" />
 
-      {/* Container - Centered, Responsive Scaling relative to Screen Size */}
-      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto flex-1 flex flex-col justify-center items-stretch gap-1 sm:gap-2 md:gap-3 py-0.5 h-full max-h-full">
+      {/* Container - Centered with Rich natural spacing & Large Cards */}
+      <div className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto flex flex-col gap-3 sm:gap-4 py-2">
         {/* Compact Header Card */}
         <div className="shrink-0">
           <HeaderCard onOpenQR={() => setIsQRModalOpen(true)} onShare={handleShareCard} />
@@ -146,41 +146,41 @@ export default function App() {
           <button
             onClick={handleTriggerInstall}
             id="btn-install-pwa-primary"
-            className="w-full p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-rose-200 hover:border-[#9E1B22] transition-all flex items-center justify-between text-right cursor-pointer group shadow-2xs hover:shadow-xs"
+            className="w-full p-3 sm:p-3.5 md:p-4 rounded-2xl bg-white border border-rose-200 hover:border-[#9E1B22] transition-all flex items-center justify-between text-right cursor-pointer group shadow-xs hover:shadow-md"
           >
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shadow-2xs shrink-0 group-hover:scale-105 transition-transform">
-                <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div className="overflow-hidden">
-                <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 block truncate">
+                <span className="text-sm sm:text-base font-black text-slate-900 block truncate">
                   نصب اپلیکیشن روی گوشی
                 </span>
-                <p className="text-[10px] sm:text-xs text-slate-600 truncate">
+                <p className="text-xs text-slate-600 truncate">
                   دسترسی سریع و بدون نیاز به اینترنت
                 </p>
               </div>
             </div>
-            <div className="text-[10px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg sm:rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
+            <div className="text-xs sm:text-sm font-bold px-3 py-1 rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
               نصب اپ
             </div>
           </button>
         </motion.div>
 
         {/* Essential Quick Contact, Website & Location Cards Grid */}
-        <div className="space-y-1 sm:space-y-1.5 md:space-y-2 shrink-0">
+        <div className="space-y-2.5 sm:space-y-3 shrink-0">
           {/* Main Grid: Office, Mobile, WhatsApp, Telegram */}
-          <div className="grid grid-cols-2 gap-1 sm:gap-2 md:gap-3">
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
             {/* Call Office */}
             <a
               href={`tel:${businessData.phone}`}
               id="btn-quick-call-office"
-              className="p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-xs hover:shadow-md group cursor-pointer"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
-                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 leading-tight">
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
                 تماس دفتر
               </span>
             </a>
@@ -189,12 +189,12 @@ export default function App() {
             <a
               href={`tel:${businessData.mobile}`}
               id="btn-quick-call-mobile"
-              className="p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-xs hover:shadow-md group cursor-pointer"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs">
-                <Smartphone className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs">
+                <Smartphone className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 leading-tight">
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
                 تماس همراه
               </span>
             </a>
@@ -205,12 +205,12 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-whatsapp"
-              className="p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-slate-200 hover:border-emerald-600 flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-600 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-xs hover:shadow-md group cursor-pointer"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-xl bg-emerald-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-emerald-900/20">
-                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-emerald-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-emerald-900/20">
+                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 leading-tight">
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
                 واتساپ سفارشات
               </span>
             </a>
@@ -221,12 +221,12 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-telegram"
-              className="p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-slate-200 hover:border-sky-500 flex flex-col items-center justify-center text-center gap-1 sm:gap-1.5 transition-all active:scale-95 shadow-2xs hover:shadow-xs group cursor-pointer"
+              className="p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 flex flex-col items-center justify-center text-center gap-2 transition-all active:scale-95 shadow-xs hover:shadow-md group cursor-pointer"
             >
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-11 md:h-11 rounded-xl bg-sky-500 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-sky-900/20">
-                <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 ml-0.5" />
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-sky-500 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-sky-900/20">
+                <Send className="w-5 h-5 sm:w-6 sm:h-6 ml-0.5" />
               </div>
-              <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 leading-tight">
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-tight">
                 تلگرام سفارشات
               </span>
             </a>
@@ -237,22 +237,22 @@ export default function App() {
               target="_blank"
               rel="noopener noreferrer"
               id="btn-quick-website"
-              className="col-span-2 p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all active:scale-98 shadow-2xs hover:shadow-xs group cursor-pointer"
+              className="col-span-2 p-3 sm:p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all active:scale-98 shadow-xs hover:shadow-md group cursor-pointer"
             >
-              <div className="flex items-center gap-2 md:gap-3">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
-                  <Globe className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#9E1B22] flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform shadow-xs shadow-rose-900/20">
+                  <Globe className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <span className="text-xs sm:text-sm md:text-base font-black text-slate-900 block leading-tight">
+                  <span className="text-sm sm:text-base font-black text-slate-900 block leading-tight">
                     وبسایت رسمی دسن گرافیک
                   </span>
-                  <p className="text-[9px] sm:text-[10px] md:text-xs text-slate-500 font-mono mt-0.5 dir-ltr text-right">
+                  <p className="text-xs text-slate-500 font-mono mt-0.5 dir-ltr text-right">
                     www.desangraphic.com
                   </p>
                 </div>
               </div>
-              <div className="text-[10px] sm:text-xs md:text-sm font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg sm:rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
+              <div className="text-xs sm:text-sm font-bold px-3 py-1.5 rounded-xl bg-rose-50 group-hover:bg-[#9E1B22] text-[#9E1B22] group-hover:text-white transition-colors shrink-0 border border-rose-200">
                 ورود به سایت
               </div>
             </a>
@@ -262,12 +262,12 @@ export default function App() {
           <button
             onClick={() => setIsLocationModalOpen(true)}
             id="btn-quick-location-card"
-            className="w-full p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#84141A] to-[#9E1B22] border border-rose-800 flex items-center gap-2 sm:gap-2.5 text-right transition-all active:scale-98 shadow-xs shadow-rose-900/20 hover:shadow-sm group cursor-pointer"
+            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#84141A] to-[#9E1B22] border border-rose-800 flex items-center gap-3 text-right transition-all active:scale-98 shadow-sm shadow-rose-900/20 hover:shadow-md group cursor-pointer"
           >
-            <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
-              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <span className="text-xs sm:text-sm md:text-base font-black text-white leading-tight">
+            <span className="text-sm sm:text-base md:text-lg font-black text-white leading-tight">
               آدرس و مسیریابی دفتر
             </span>
           </button>
@@ -280,19 +280,19 @@ export default function App() {
             id="btn-open-details-modal"
             animate={{ scale: [1, 1.01, 1] }}
             transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
-            className="w-full p-1.5 sm:p-2 md:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-100 hover:from-rose-100 hover:to-amber-100 border border-rose-300 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all shadow-2xs hover:shadow-xs cursor-pointer group relative overflow-hidden"
+            className="w-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-rose-50 via-amber-50 to-rose-100 hover:from-rose-100 hover:to-amber-100 border border-rose-300 hover:border-[#9E1B22] flex items-center justify-between text-right transition-all shadow-xs hover:shadow-md cursor-pointer group relative overflow-hidden"
           >
-            <div className="flex items-center gap-2 md:gap-3 relative z-10">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-[#9E1B22] text-white flex items-center justify-center shadow-2xs group-hover:rotate-12 transition-transform duration-300">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 animate-pulse" />
+            <div className="flex items-center gap-2.5 sm:gap-3 relative z-10">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#9E1B22] text-white flex items-center justify-center shadow-xs group-hover:rotate-12 transition-transform duration-300">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300 animate-pulse" />
               </div>
               <div className="text-right">
                 <div className="flex items-center gap-1">
-                  <span className="text-xs sm:text-sm font-black bg-gradient-to-r from-[#9E1B22] via-rose-700 to-amber-900 bg-clip-text text-transparent">
+                  <span className="text-xs sm:text-sm md:text-base font-black bg-gradient-to-r from-[#9E1B22] via-rose-700 to-amber-900 bg-clip-text text-transparent">
                     مشاهده خدمات کامل، آدرس و شبکه‌های اجتماعی
                   </span>
                 </div>
-                <p className="text-[9px] sm:text-[10px] md:text-xs font-bold text-rose-800/80 mt-0.5">
+                <p className="text-xs font-bold text-rose-800/80 mt-0.5">
                   چاپ، طراحی، هدایای تبلیغاتی و اینستاگرام
                 </p>
               </div>

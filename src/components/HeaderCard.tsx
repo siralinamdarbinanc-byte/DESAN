@@ -51,39 +51,39 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
       initial={{ opacity: 0, y: -10, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="relative overflow-visible rounded-xl sm:rounded-2xl bg-white p-2 sm:p-2.5 md:p-3.5 shadow-xs border border-rose-100 text-center"
+      className="relative overflow-visible rounded-2xl sm:rounded-3xl bg-white p-3.5 sm:p-4.5 md:p-5 shadow-sm border border-rose-100 text-center"
     >
       {/* Deep Red Background Subtle Accents */}
-      <div className="absolute -top-16 -left-16 h-32 w-32 rounded-full bg-rose-100/40 blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 h-32 w-32 rounded-full bg-rose-50/60 blur-3xl pointer-events-none" />
+      <div className="absolute -top-16 -left-16 h-36 w-36 rounded-full bg-rose-100/40 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 -right-16 h-36 w-36 rounded-full bg-rose-50/60 blur-3xl pointer-events-none" />
 
       {/* Header Top Action Buttons */}
-      <div className="flex items-center justify-end mb-0.5 relative z-10">
-        <div className="flex items-center gap-1 sm:gap-1.5">
+      <div className="flex items-center justify-end mb-1 relative z-10">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             onClick={onOpenQR}
             id="btn-header-qr"
-            className="p-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-[#9E1B22] border border-rose-200/80 transition-all active:scale-95 shadow-2xs flex items-center justify-center cursor-pointer"
+            className="p-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-[#9E1B22] border border-rose-200/80 transition-all active:scale-95 shadow-2xs flex items-center justify-center cursor-pointer"
             title="نمایش QR Code"
             aria-label="کد QR"
           >
-            <QrCode className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <QrCode className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
           </button>
 
           <button
             onClick={onShare}
             id="btn-header-share"
-            className="p-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all active:scale-95 shadow-2xs flex items-center justify-center cursor-pointer"
+            className="p-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all active:scale-95 shadow-2xs flex items-center justify-center cursor-pointer"
             title="اشتراک‌گذاری"
             aria-label="اشتراک‌گذاری"
           >
-            <Share2 className="w-3.5 h-3.5 md:w-4 md:h-4" />
+            <Share2 className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
           </button>
         </div>
       </div>
 
       {/* Header Content */}
-      <div className="flex flex-col items-center justify-center space-y-1 sm:space-y-1.5 relative z-10 py-0.5">
+      <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-2.5 relative z-10 py-0.5">
         {/* Prominent Logo Container */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -94,7 +94,7 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
           className="relative cursor-pointer"
           onClick={onOpenQR}
         >
-          <div className="relative w-28 sm:w-36 md:w-44 h-9 sm:h-11 md:h-13 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
+          <div className="relative w-36 sm:w-44 md:w-52 h-12 sm:h-14 md:h-16 rounded-xl bg-transparent p-0.5 flex items-center justify-center overflow-hidden transition-all duration-300">
             <img
               src="/logo.png"
               alt="لوگوی دسن گرافیک"
@@ -117,24 +117,24 @@ export const HeaderCard: React.FC<HeaderCardProps> = ({ onOpenQR, onShare }) => 
             scale: { repeat: Infinity, duration: 3.5, ease: 'easeInOut' },
             duration: 0.5
           }}
-          className="relative z-20 px-3.5 sm:px-4 md:px-5 py-1 sm:py-1.5 rounded-xl bg-gradient-to-r from-[#9E1B22] via-[#B91C24] to-[#9E1B22] text-white border border-rose-200/50 shadow-xs shadow-rose-950/20 flex items-center justify-center gap-2 transform hover:scale-105 transition-all cursor-pointer group"
+          className="relative z-20 px-5 sm:px-6 py-2 sm:py-2.5 rounded-2xl bg-gradient-to-r from-[#9E1B22] via-[#B91C24] to-[#9E1B22] text-white border border-rose-200/50 shadow-md shadow-rose-950/20 flex items-center justify-center gap-2 transform hover:scale-105 transition-all cursor-pointer group"
           onClick={onOpenQR}
         >
-          <h1 className="text-base sm:text-lg md:text-xl font-black tracking-tight leading-none text-white drop-shadow-xs">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight leading-none text-white drop-shadow-xs">
             {businessData.name}
           </h1>
         </motion.div>
 
         {/* TYPEWRITER MOTION SUBTITLE */}
-        <div className="flex items-center justify-center gap-1 sm:gap-1.5 bg-slate-100/90 border border-slate-200/90 px-2 sm:px-2.5 md:px-3 py-0.5 rounded-lg text-slate-800 text-[10px] sm:text-xs md:text-sm font-bold min-h-[22px] sm:min-h-[24px] md:min-h-[28px] max-w-full overflow-hidden shadow-2xs">
-          <Terminal className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#9E1B22] shrink-0" />
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 bg-slate-100/90 border border-slate-200/90 px-3 sm:px-3.5 py-1 rounded-xl text-slate-800 text-xs sm:text-sm md:text-base font-bold min-h-[28px] sm:min-h-[32px] max-w-full overflow-hidden shadow-2xs">
+          <Terminal className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#9E1B22] shrink-0" />
           <span className="font-bold dir-rtl truncate">
             {displayedText}
           </span>
           <motion.span
             animate={{ opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 0.8 }}
-            className="inline-block w-1 sm:w-1.5 h-3 md:h-3.5 bg-[#9E1B22] rounded-xs shrink-0"
+            className="inline-block w-1.5 h-3.5 sm:h-4 bg-[#9E1B22] rounded-xs shrink-0"
           />
         </div>
       </div>
